@@ -14,7 +14,7 @@ db = SQLAlchemy()
 
 
 class DataValidationError(Exception):
-    """Used for an data validation errors when deserializing"""
+    """Used for data validation errors when deserializing"""
 
 
 def init_db(app):
@@ -71,7 +71,7 @@ class PersistentBase:
 
     @classmethod
     def find(cls, by_id):
-        """Finds a record by it's ID"""
+        """Finds a record by its ID"""
         logger.info("Processing lookup for id %s ...", by_id)
         return cls.query.get(by_id)
 
@@ -142,4 +142,4 @@ class Account(db.Model, PersistentBase):
             name (string): the name of the Accounts you want to match
         """
         logger.info("Processing name query for %s ...", name)
-        return cls.query.filter(cls.name == name)
+        return cls.query.filter(cls.name == name).all()  # Fixed here
