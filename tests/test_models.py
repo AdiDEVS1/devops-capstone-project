@@ -145,4 +145,3 @@ class TestAccount(unittest.TestCase):
         account = Account()
         with self.assertRaises(DataValidationError):
             account.deserialize([])
-
